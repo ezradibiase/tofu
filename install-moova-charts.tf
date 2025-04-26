@@ -73,3 +73,16 @@ resource "helm_release" "prerequisiti" {
     }
   ]
 }
+
+resource "helm_release" "argocd" {
+  name        = "argocd"
+  chart       = "https://argoproj.github.io/argo-helm"
+  namespace   = "argocd"
+
+  set = [
+    {
+      name  = "configs.credentialTemplates.https-creds.url"
+      value = ""  # Inserire
+    }
+  ]
+}
